@@ -1,0 +1,163 @@
+﻿@model Bank_Simulation.ViewModels.RegistrationViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>RegistrationViewModel</h4>
+<hr />
+<div id="info-modal" class="modal">
+
+</div>
+<div class="row" >
+    <div class="col-md-4">
+        
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetNumber" class="control-label"></label>
+                <input asp-for="StreetNumber" class="form-control" />
+                <span asp-validation-for="StreetNumber" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="PostCode" class="control-label"></label>
+                <input asp-for="PostCode" class="form-control" />
+                <span asp-validation-for="PostCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesel" class="control-label"></label>
+                <input asp-for="Pesel" class="form-control" />
+                <span asp-validation-for="Pesel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberId" class="control-label"></label>
+                <input asp-for="NumberId" class="form-control" />
+                <span asp-validation-for="NumberId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+              
+                <select asp-for="typeAccount" class="form-select"  asp-items="@ViewBag.ListAccountType"></select>
+                
+            </div>
+            <br/>
+            <div  class="form-group">
+               
+                <button style="margin-bottom:5px;width:50%;height:50px" id="conf" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   Dalej
+                </button>
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <div>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Index">Anuluj</a>
+                </div>
+            </div>
+          
+        </form>
+    </div>
+</div>
+<div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+             <div class="form-group">
+                    <span>Imię:&nbsp</span><h5 style="display:inline-block" id="mFirstName"></h5></br>
+                    <span>Nazwisko:&nbsp</span><h5 style="display:inline-block" id="mLastName"></h5></br>
+                    <span>Miasto:&nbsp</span><h5 style="display:inline-block" id="mCity"></h5></br>
+                    <span>Ulica:&nbsp</span><h5 style="display:inline-block" id="mStreet"></h5></br>
+                    <span>Numer ulicy:&nbsp</span><h5 style="display:inline-block" id="mStreetNumber"></h5></br>
+                    <span>Kod pocztowy:&nbsp</span><h5 style="display:inline-block" id="mPostCode"></h5></br>
+                    <span>Numer telefonu:&nbsp</span><h5 style="display:inline-block" id="mPhoneNumber"></h5></br>
+                    <span>Email:&nbsp</span><h5 style="display:inline-block" id="mEmail"></h5></br>
+                    <span>Pesel:&nbsp</span><h5 style="display:inline-block" id="mPesel"></h5></br>
+                    <span>Numer dowodu:&nbsp</span><h5 style="display:inline-block" id="mNumberId"></h5></br>
+                    <span>Rodzaj konta:&nbsp</span><h5 style="display:inline-block" id="mtypeAccount"></h5></br>
+           
+
+               
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Wróć do wniosku</button>
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-controller="Home" asp-action="Index">Anuluj</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $("#conf").click(function () {
+
+               // $("#exampleModal").modal('show');
+
+              // const myModalAlternative = new bootstrap.Modal('#exampleModal', { backdrop: false })
+              //  myModalAlternative.show();
+                $("#mPesel").text($("#Pesel").val());
+                $("#mFirstName").text($("#FirstName").val());
+                $("#mLastName").text($("#LastName").val());
+                $("#mCity").text($("#City").val());
+                $("#mStreet").text($("#Street").val());
+                $("#mStreetNumber").text($("#StreetNumber").val());
+                $("#mPostCode").text($("#PostCode").val());
+                $("#mEmail").text($("#Email").val());
+                $("#mNumberId").text($("#NumberId").val());
+                $("#mtypeAccount").text($("#typeAccountId option:selected").text());
+                $("#mPhoneNumber").text($("#PhoneNumber").val());
+
+                
+                    
+            });
+         
+        });
+    </script>
+}

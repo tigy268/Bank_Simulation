@@ -1,0 +1,32 @@
+﻿@model Bank_Simulation.ViewModels.RegistrationViewModel
+
+
+<div id="registration">
+    <div class="row" style="background-color:red">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+                <h1>DUPA</h1>
+
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-controller="Home" asp-action="Index">Wycofaj</a>
+    </div>
+</div>
+<div id="confirmation">
+    <div>
+        <button onclick="ShowMainForm()">Back to List</button>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+
+}
